@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fortune_room_booking_app/config/constants.dart';
+import 'package:fortune_room_booking_app/pages/auth/components/sign_up_form.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -62,54 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(
                   height: 50,
                 ),
-                Form(
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.person),
-                          labelText: 'Username',
-                          helperText: 'Please enter a unique username',
-                        ),
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.email),
-                          labelText: 'Email',
-                          helperText: 'Please enter a valid email',
-                        ),
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            icon: Icon(Icons.lock),
-                            labelText: 'Password',
-                            helperText:
-                                'Password should be at least 8 characters'),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      SizedBox(
-                        width: devSize.width,
-                        child: TextButton(
-                          onPressed: () {},
-                          style: TextButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 15,
-                            ),
-                            backgroundColor: secondaryColor,
-                          ),
-                          child: const Text(
-                            'SIGN UP',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                SignUpForm(devSize: devSize),
               ],
             ),
           ),
