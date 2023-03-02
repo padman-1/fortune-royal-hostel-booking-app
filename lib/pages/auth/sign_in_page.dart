@@ -3,9 +3,12 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fortune_room_booking_app/config/constants.dart';
+import 'package:fortune_room_booking_app/pages/auth/components/sign_in_from.dart';
 import 'package:fortune_room_booking_app/pages/auth/sign_up_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
+
+import 'components/sign_in_from.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -67,46 +70,7 @@ class _SignInPageState extends State<SignInPage> {
                     const SizedBox(
                       height: 50,
                     ),
-                    Form(
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              icon: Icon(Icons.email),
-                              labelText: 'Email',
-                              helperText: 'Please enter a Valid Email',
-                            ),
-                          ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              icon: Icon(Icons.lock),
-                              labelText: 'Password',
-                              helperText:
-                                  'Password should be at least 8 Characters',
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: devSize.width,
-                            child: TextButton(
-                              onPressed: () {},
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.symmetric(vertical: 15),
-                                backgroundColor: secondaryColor,
-                              ),
-                              child: const Text(
-                                'SIGN IN',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    SignInForm(devSize: devSize),
                     const SizedBox(
                       height: 40,
                     ),
