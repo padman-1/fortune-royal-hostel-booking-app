@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:fortune_room_booking_app/config/constants.dart';
+import 'package:fortune_room_booking_app/pages/home/tabs/booking_tab.dart';
+import 'package:fortune_room_booking_app/pages/home/tabs/home_tab.dart';
+import 'package:fortune_room_booking_app/pages/home/tabs/my_booking_tab.dart';
+import 'package:fortune_room_booking_app/pages/home/tabs/setting_tab.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +17,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var _currentIndex = 0;
+  final pages = const [
+    HomeTab(),
+    BookingTab(),
+    MyBookingsTab(),
+    SettingsTab(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +40,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      body: pages[_currentIndex],
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),

@@ -23,6 +23,8 @@ class _WelcomePageState extends State<WelcomePage> {
               image: AssetImage(
                 'assets/images/welc1.jpg',
               ),
+              // colorFilter:
+              //     ColorFilter.mode(Colors.transparent, BlendMode.modulate),
               fit: BoxFit.cover),
         ),
         child: Padding(
