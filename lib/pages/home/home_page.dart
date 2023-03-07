@@ -26,12 +26,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         leading: const Icon(
           Icons.menu,
           color: Colors.black54,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[200],
         actions: const [
           CircleAvatar(
             backgroundImage: AssetImage(

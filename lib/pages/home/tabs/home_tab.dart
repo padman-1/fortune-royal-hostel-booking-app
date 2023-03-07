@@ -28,202 +28,231 @@ class _HomeTabState extends State<HomeTab> {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(
-          padding: const EdgeInsets.only(
-            left: 10,
-            right: 10,
-            top: 10,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hello Padman',
-                style: GoogleFonts.manrope(
-                  fontSize: 22,
-                ),
+        padding: const EdgeInsets.only(
+          left: 10,
+          right: 10,
+          top: 10,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hello Padman',
+              style: GoogleFonts.manrope(
+                fontSize: 22,
               ),
-              Text(
-                'Welcome to book any room of your choice',
-                style: GoogleFonts.manrope(
-                    // fontSize: 22,
-                    ),
+            ),
+            Text(
+              'Welcome to book any room of your choice',
+              style: GoogleFonts.manrope(
+                  // fontSize: 22,
+                  ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text('Our Facilities'),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Study Room'),
+                Text('Television Room'),
+                Text('Constant water supply'),
+                Text('1200kw Plant'),
+                Text('Kitchen in every room'),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: Text(
+                'Take a look',
+                style: GoogleFonts.manrope(fontSize: 16),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              CarouselSlider.builder(
-                itemCount: images.length,
-                itemBuilder: ((context, index, realIndex) {
-                  final urlImage = images[index];
-                  return buildImage(urlImage, index);
-                }),
-                options: CarouselOptions(
-                  height: devSize.height / 2.5,
-                  autoPlay: true,
-                  // enlargeCenterPage: true,
-                  // autoPlayInterval: Duration(seconds: 0),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Text(
-                  'Take a look at our various facilities',
-                  style: GoogleFonts.manrope(fontSize: 18),
-                ),
-              ),
-              Column(
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: Row(
                 children: [
                   Card(
-                    color: secondaryColor,
+                    // color: secondaryColor,
                     elevation: 20,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 10.0,
                       ),
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Icon(
                             Icons.apartment,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
                           Text(
                             'Main Building',
                             style: GoogleFonts.manrope(
-                              color: Colors.white,
-                            ),
+                                // color: Colors.white,
+                                ),
                           ),
-                          const Icon(
-                            Icons.arrow_right,
-                            color: Colors.white,
-                          ),
+                          // const Icon(
+                          //   Icons.arrow_right,
+                          //   // color: Colors.white,
+                          // ),
                         ],
                       ),
                     ),
                   ),
                   Card(
-                    color: primaryColor,
+                    // color: primaryColor,
                     elevation: 20,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 10.0,
                       ),
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Icon(
                             Icons.hotel,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
                           Text(
                             'Rooms',
                             style: GoogleFonts.manrope(
-                              color: Colors.white,
-                            ),
+                                // color: Colors.white,
+                                ),
                           ),
-                          const Icon(
-                            Icons.arrow_right,
-                            color: Colors.white,
-                          ),
+                          // const Icon(
+                          //   Icons.arrow_right,
+                          //   // color: Colors.white,
+                          // ),
                         ],
                       ),
                     ),
                   ),
                   Card(
-                    color: secondaryColor,
-                    elevation: 20,
+                    // color: secondaryColor,
+                    // elevation: 20,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 10.0,
                       ),
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Icon(
                             Icons.kitchen,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
                           Text(
                             'Kitchen',
                             style: GoogleFonts.manrope(
-                              color: Colors.white,
-                            ),
+                                // color: Colors.white,
+                                ),
                           ),
-                          const Icon(
-                            Icons.arrow_right,
-                            color: Colors.white,
-                          ),
+                          //   const Icon(
+                          //     Icons.arrow_right,
+                          //     // color: Colors.white,
+                          //   ),
                         ],
                       ),
                     ),
                   ),
                   Card(
-                    color: primaryColor,
+                    // color: primaryColor,
                     elevation: 20,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 10.0,
                       ),
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Icon(
                             Icons.menu_book,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
                           Text(
                             'Study Room',
                             style: GoogleFonts.manrope(
-                              color: Colors.white,
-                            ),
+                                // color: Colors.white,
+                                ),
                           ),
-                          const Icon(
-                            Icons.arrow_right,
-                            color: Colors.white,
-                          ),
+                          // const Icon(
+                          //   Icons.arrow_right,
+                          //   // color: Colors.white,
+                          // ),
                         ],
                       ),
                     ),
                   ),
                   Card(
-                    color: secondaryColor,
+                    // color: secondaryColor,
                     elevation: 20,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 10.0,
                       ),
-                      child: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Icon(
                             Icons.tv,
-                            color: Colors.white,
+                            // color: Colors.white,
                           ),
                           Text(
                             'TV Room',
                             style: GoogleFonts.manrope(
-                              color: Colors.white,
-                            ),
+                                // color: Colors.white,
+                                ),
                           ),
-                          const Icon(
-                            Icons.arrow_right,
-                            color: Colors.white,
-                          ),
+                          // const Icon(
+                          //   Icons.arrow_right,
+                          //   color: Colors.white,
+                          // ),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-            ],
-          )),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Few Excerpts',
+              style: GoogleFonts.manrope(fontSize: 16),
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            CarouselSlider.builder(
+              itemCount: images.length,
+              itemBuilder: ((context, index, realIndex) {
+                final urlImage = images[index];
+                return buildImage(urlImage, index);
+              }),
+              options: CarouselOptions(
+                height: 250,
+                autoPlay: true,
+                // enlargeCenterPage: true,
+                // autoPlayInterval: Duration(seconds: 0),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -232,13 +261,17 @@ class _HomeTabState extends State<HomeTab> {
     return Container(
       width: devSize.width / 1.2,
       margin: const EdgeInsets.symmetric(
-        horizontal: 12,
+        horizontal: 8,
+      ),
+      decoration: BoxDecoration(
+        // border: Border.all(),
+        borderRadius: BorderRadius.circular(15),
+        image: DecorationImage(
+          image: AssetImage(urlImage),
+          fit: BoxFit.cover,
+        ),
       ),
       // color: Colors.grey,
-      child: Image(
-        image: AssetImage(urlImage),
-        fit: BoxFit.cover,
-      ),
     );
   }
 }
