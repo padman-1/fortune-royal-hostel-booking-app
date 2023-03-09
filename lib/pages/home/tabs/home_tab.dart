@@ -22,6 +22,13 @@ class _HomeTabState extends State<HomeTab> {
     'assets/images/welc2.jpg',
     'assets/images/tel3.jpg',
   ];
+  List<String> facilities = [
+    'Study Room',
+    'Television Room',
+    'Constant water supply',
+    '1200kw Plant',
+    'Kitchen in every room',
+  ];
   @override
   Widget build(BuildContext context) {
     final devSize = MediaQuery.of(context).size;
@@ -51,16 +58,58 @@ class _HomeTabState extends State<HomeTab> {
             const SizedBox(
               height: 20,
             ),
-            Text('Our Facilities'),
+            CarouselSlider.builder(
+              itemCount: images.length,
+              itemBuilder: ((context, index, realIndex) {
+                final urlImage = images[index];
+                return buildImage(urlImage, index);
+              }),
+              options: CarouselOptions(
+                height: 230,
+                autoPlay: true,
+                // enlargeCenterPage: true,
+                // autoPlayInterval: Duration(seconds: 0),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Text(
+                'Our Facilities',
+                style: GoogleFonts.lato(
+                  fontSize: 25,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black54,
+                ),
+              ),
+            ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Study Room'),
-                Text('Television Room'),
-                Text('Constant water supply'),
-                Text('1200kw Plant'),
-                Text('Kitchen in every room'),
-              ],
+              children: facilities.map(
+                (facility) {
+                  return Row(
+                    children: [
+                      const Text(
+                        '\u2022',
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Text(
+                          facility,
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ).toList(),
             ),
             const SizedBox(
               height: 10,
@@ -71,185 +120,44 @@ class _HomeTabState extends State<HomeTab> {
                 style: GoogleFonts.manrope(fontSize: 16),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: Row(
-                children: [
-                  Card(
-                    // color: secondaryColor,
-                    elevation: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10.0,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Icons.apartment,
-                            // color: Colors.white,
-                          ),
-                          Text(
-                            'Main Building',
-                            style: GoogleFonts.manrope(
-                                // color: Colors.white,
-                                ),
-                          ),
-                          // const Icon(
-                          //   Icons.arrow_right,
-                          //   // color: Colors.white,
-                          // ),
-                        ],
-                      ),
+            Center(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _FacilitiesList(
+                      myicon: Icon(Icons.apartment),
+                      title: 'Main Building',
                     ),
-                  ),
-                  Card(
-                    // color: primaryColor,
-                    elevation: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10.0,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Icons.hotel,
-                            // color: Colors.white,
-                          ),
-                          Text(
-                            'Rooms',
-                            style: GoogleFonts.manrope(
-                                // color: Colors.white,
-                                ),
-                          ),
-                          // const Icon(
-                          //   Icons.arrow_right,
-                          //   // color: Colors.white,
-                          // ),
-                        ],
-                      ),
+                    _FacilitiesList(
+                      myicon: Icon(Icons.hotel),
+                      title: 'Rooms',
                     ),
-                  ),
-                  Card(
-                    // color: secondaryColor,
-                    // elevation: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10.0,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Icons.kitchen,
-                            // color: Colors.white,
-                          ),
-                          Text(
-                            'Kitchen',
-                            style: GoogleFonts.manrope(
-                                // color: Colors.white,
-                                ),
-                          ),
-                          //   const Icon(
-                          //     Icons.arrow_right,
-                          //     // color: Colors.white,
-                          //   ),
-                        ],
-                      ),
+                    _FacilitiesList(
+                      myicon: Icon(Icons.kitchen),
+                      title: 'Kitchen',
                     ),
-                  ),
-                  Card(
-                    // color: primaryColor,
-                    elevation: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10.0,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Icons.menu_book,
-                            // color: Colors.white,
-                          ),
-                          Text(
-                            'Study Room',
-                            style: GoogleFonts.manrope(
-                                // color: Colors.white,
-                                ),
-                          ),
-                          // const Icon(
-                          //   Icons.arrow_right,
-                          //   // color: Colors.white,
-                          // ),
-                        ],
-                      ),
+                    _FacilitiesList(
+                      myicon: Icon(Icons.tv),
+                      title: 'TV Room',
                     ),
-                  ),
-                  Card(
-                    // color: secondaryColor,
-                    elevation: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10.0,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Icons.tv,
-                            // color: Colors.white,
-                          ),
-                          Text(
-                            'TV Room',
-                            style: GoogleFonts.manrope(
-                                // color: Colors.white,
-                                ),
-                          ),
-                          // const Icon(
-                          //   Icons.arrow_right,
-                          //   color: Colors.white,
-                          // ),
-                        ],
-                      ),
+                    _FacilitiesList(
+                      myicon: Icon(Icons.menu_book),
+                      title: 'Study Room',
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(
               height: 20,
             ),
-            Text(
-              'Few Excerpts',
-              style: GoogleFonts.manrope(fontSize: 16),
-            ),
-            const SizedBox(
-              height: 6,
-            ),
-            CarouselSlider.builder(
-              itemCount: images.length,
-              itemBuilder: ((context, index, realIndex) {
-                final urlImage = images[index];
-                return buildImage(urlImage, index);
-              }),
-              options: CarouselOptions(
-                height: 250,
-                autoPlay: true,
-                // enlargeCenterPage: true,
-                // autoPlayInterval: Duration(seconds: 0),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
+            // Text(
+            //   'Few Excerpts',
+            //   style: GoogleFonts.manrope(fontSize: 16),
+            // ),
           ],
         ),
       ),
@@ -259,7 +167,7 @@ class _HomeTabState extends State<HomeTab> {
   Widget buildImage(String urlImage, int index) {
     final devSize = MediaQuery.of(context).size;
     return Container(
-      width: devSize.width / 1.2,
+      width: devSize.width / 1.4,
       margin: const EdgeInsets.symmetric(
         horizontal: 8,
       ),
@@ -272,6 +180,41 @@ class _HomeTabState extends State<HomeTab> {
         ),
       ),
       // color: Colors.grey,
+    );
+  }
+}
+
+class _FacilitiesList extends StatelessWidget {
+  _FacilitiesList({super.key, required this.myicon, required this.title});
+  Widget myicon;
+  String title;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 80,
+      width: 80,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
+        vertical: 10,
+      ),
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.blueGrey.withOpacity(0.2),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          myicon,
+          Text(
+            title,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 }
