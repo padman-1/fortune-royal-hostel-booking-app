@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682344994266",
+    "project_id": "my-firebase-project-481b1",
+    "storage_bucket": "my-firebase-project-481b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682344994266:android:20de6f95794868fc9f9ce3",
+        "android_client_info": {
+          "package_name": "com.example.fortune_room_booking_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682344994266-kqroidb8bhp74oolcecn89gntj63lkr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4JZD9TfrgSNtQE6P0qK74DpU4poMQGA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682344994266-kqroidb8bhp74oolcecn89gntj63lkr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

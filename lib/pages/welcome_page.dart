@@ -35,11 +35,13 @@ class _WelcomePageState extends State<WelcomePage> {
             children: [
               Text(
                 'Welcome to Fortune Royal Hostel',
-                style: GoogleFonts.manrope(
-                  textStyle: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold),
+                style: GoogleFonts.lato(
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    // fontStyle: FontStyle.italic,
+                  ),
                 ),
               ),
               SizedBox(
