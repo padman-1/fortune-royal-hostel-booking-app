@@ -17,6 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     final devSize = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         height: devSize.height,
         alignment: Alignment.center,
