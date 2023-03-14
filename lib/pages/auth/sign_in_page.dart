@@ -22,6 +22,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     final devSize = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         alignment: Alignment.center,
         height: devSize.height,
