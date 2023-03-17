@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -23,6 +24,11 @@ class _HomePageState extends State<HomePage> {
     MyBookingsTab(),
     SettingsTab(),
   ];
+  final user = FirebaseAuth.instance.currentUser;
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +39,19 @@ class _HomePageState extends State<HomePage> {
           color: Colors.black54,
         ),
         backgroundColor: Colors.grey[200],
-        actions: const [
+        actions: [
           CircleAvatar(
             backgroundImage: AssetImage(
               'assets/images/mid2.jpg',
             ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          IconButton(
+            onPressed: signUserOut,
+            icon: Icon(Icons.logout),
+            color: Colors.black,
           ),
         ],
       ),

@@ -1,13 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_room_booking_app/config/constants.dart';
 import 'package:fortune_room_booking_app/pages/home/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../config/constants.dart';
 import '../card_verification.dart';
 
-class SignInForm extends StatelessWidget {
-  const SignInForm({
+class SignInForm extends StatefulWidget {
+  SignInForm({
     super.key,
     required this.devSize,
   });
@@ -15,11 +18,45 @@ class SignInForm extends StatelessWidget {
   final Size devSize;
 
   @override
+  State<SignInForm> createState() => _SignInFormState();
+}
+
+class _SignInFormState extends State<SignInForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void signUserIn() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      if (e.code == 'user-not-found') {
+        wrongEmailMessage();
+      } else if (e.code == 'wrong-password') {
+        wrongPasswordMessage();
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
           TextFormField(
+            controller: emailController,
             decoration: const InputDecoration(
               icon: Icon(Icons.email),
               labelText: 'Email',
@@ -27,6 +64,7 @@ class SignInForm extends StatelessWidget {
             ),
           ),
           TextFormField(
+            controller: passwordController,
             decoration: const InputDecoration(
               icon: Icon(Icons.lock),
               labelText: 'Password',
@@ -37,15 +75,10 @@ class SignInForm extends StatelessWidget {
             height: 20,
           ),
           SizedBox(
-            width: devSize.width,
+            width: widget.devSize.width,
             child: TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
-                );
+                signUserIn();
               },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 15),
@@ -61,6 +94,37 @@ class SignInForm extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void wrongEmailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          icon: const Icon(
+            Icons.warning,
+            color: Colors.red,
+          ),
+          title: Text(
+            'Incorrect Email',
+            style: GoogleFonts.lato(color: Colors.black54),
+          ),
+        );
+      },
+    );
+  }
+
+  void wrongPasswordMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text(
+            'Incorrect Password',
+          ),
+        );
+      },
     );
   }
 }

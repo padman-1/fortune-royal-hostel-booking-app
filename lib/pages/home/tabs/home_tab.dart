@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -14,6 +15,7 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  final user = FirebaseAuth.instance.currentUser!;
   final images = [
     'assets/images/front1.jpg',
     'assets/images/mid1.jpg',
@@ -44,7 +46,7 @@ class _HomeTabState extends State<HomeTab> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hello Padman',
+              'Hello ' + user.email!,
               style: GoogleFonts.manrope(
                 fontSize: 22,
               ),

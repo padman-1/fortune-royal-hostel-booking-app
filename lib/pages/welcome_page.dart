@@ -5,6 +5,8 @@ import 'package:fortune_room_booking_app/config/constants.dart';
 import 'package:fortune_room_booking_app/pages/auth/sign_in_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'auth/auth_page.dart';
+
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
@@ -66,7 +68,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SignInPage(),
+                            builder: (context) => AuthPage(),
                           ),
                         );
                       },

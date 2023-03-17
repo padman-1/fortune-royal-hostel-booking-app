@@ -24,8 +24,8 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        alignment: Alignment.center,
         height: devSize.height,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
