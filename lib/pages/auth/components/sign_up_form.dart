@@ -4,7 +4,7 @@ import 'package:fortune_room_booking_app/config/constants.dart';
 
 import '../../config/constants.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     super.key,
     required this.devSize,
@@ -13,11 +13,30 @@ class SignUpForm extends StatelessWidget {
   final Size devSize;
 
   @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  final _usernameController = TextEditingController();
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
           TextFormField(
+            controller: _usernameController,
             decoration: const InputDecoration(
               icon: Icon(Icons.person),
               labelText: 'Username',
@@ -25,6 +44,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
           TextFormField(
+            controller: _emailController,
             decoration: const InputDecoration(
               icon: Icon(Icons.email),
               labelText: 'Email',
@@ -32,6 +52,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
           TextFormField(
+            controller: _passwordController,
             decoration: const InputDecoration(
                 icon: Icon(Icons.lock),
                 labelText: 'Password',
@@ -41,7 +62,7 @@ class SignUpForm extends StatelessWidget {
             height: 40,
           ),
           SizedBox(
-            width: devSize.width,
+            width: widget.devSize.width,
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(

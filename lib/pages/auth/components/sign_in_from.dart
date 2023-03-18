@@ -42,11 +42,7 @@ class _SignInFormState extends State<SignInForm> {
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
-      if (e.code == 'user-not-found') {
-        wrongEmailMessage();
-      } else if (e.code == 'wrong-password') {
-        wrongPasswordMessage();
-      }
+      showErrorMessage(e.code);
     }
   }
 
@@ -97,7 +93,7 @@ class _SignInFormState extends State<SignInForm> {
     );
   }
 
-  void wrongEmailMessage() {
+  void showErrorMessage(String message) {
     showDialog(
       context: context,
       builder: (context) {
@@ -107,7 +103,7 @@ class _SignInFormState extends State<SignInForm> {
             color: Colors.red,
           ),
           title: Text(
-            'Incorrect Email',
+            message,
             style: GoogleFonts.lato(color: Colors.black54),
           ),
         );

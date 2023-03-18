@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:fortune_room_booking_app/pages/auth/card_verification.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -132,23 +133,29 @@ class _HomeTabState extends State<HomeTab> {
                     _FacilitiesList(
                       myicon: Icon(Icons.apartment),
                       title: 'Main Building',
+                      ontap: () {},
                     ),
                     _FacilitiesList(
-                      myicon: Icon(Icons.hotel),
-                      title: 'Rooms',
-                    ),
+                        myicon: Icon(Icons.hotel),
+                        title: 'Rooms',
+                        ontap: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => StudentCardPage(),
+                          //   ),
+                          // );
+                        }),
                     _FacilitiesList(
-                      myicon: Icon(Icons.kitchen),
-                      title: 'Kitchen',
-                    ),
+                        myicon: Icon(Icons.kitchen),
+                        title: 'Kitchen',
+                        ontap: () {}),
                     _FacilitiesList(
-                      myicon: Icon(Icons.tv),
-                      title: 'TV Room',
-                    ),
+                        myicon: Icon(Icons.tv), title: 'TV Room', ontap: () {}),
                     _FacilitiesList(
-                      myicon: Icon(Icons.menu_book),
-                      title: 'Study Room',
-                    ),
+                        myicon: Icon(Icons.menu_book),
+                        title: 'Study Room',
+                        ontap: () {}),
                   ],
                 ),
               ),
@@ -187,9 +194,15 @@ class _HomeTabState extends State<HomeTab> {
 }
 
 class _FacilitiesList extends StatelessWidget {
-  _FacilitiesList({super.key, required this.myicon, required this.title});
+  _FacilitiesList({
+    super.key,
+    required this.myicon,
+    required this.title,
+    required this.ontap,
+  });
   Widget myicon;
   String title;
+  Function ontap;
   @override
   Widget build(BuildContext context) {
     return Container(
