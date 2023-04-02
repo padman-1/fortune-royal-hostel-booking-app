@@ -110,17 +110,4 @@ class _SignInFormState extends State<SignInForm> {
       },
     );
   }
-
-  void wrongPasswordMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          title: Text(
-            'Incorrect Password',
-          ),
-        );
-      },
-    );
-  }
 }

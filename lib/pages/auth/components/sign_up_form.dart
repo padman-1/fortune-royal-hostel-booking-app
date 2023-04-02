@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_room_booking_app/config/constants.dart';
+import 'package:fortune_room_booking_app/pages/auth/sign_in_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../config/constants.dart';
 
@@ -28,6 +32,37 @@ class _SignUpFormState extends State<SignUpForm> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future signUp() async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      //     content: Row(
+      //   children: [
+      //     const Icon(
+      //       Icons.check_circle,
+      //       color: Colors.green,
+      //     ),
+      //     Text('Account created successfully'),
+      //   ],
+      // )));
+    } on FirebaseAuthException catch (e) {
+      showErrorMessage(e.code);
+    }
+
+    addUserDetails(
+      _usernameController.text.trim(),
+    );
+  }
+
+  Future addUserDetails(String username) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'Username': username,
+    });
   }
 
   @override
@@ -64,7 +99,10 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(
             width: widget.devSize.width,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                signUp();
+                Navigator.pop(context);
+              },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   vertical: 15,
@@ -82,5 +120,18 @@ class _SignUpFormState extends State<SignUpForm> {
         ],
       ),
     );
+  }
+
+  void showErrorMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Row(
+      children: [
+        const Icon(
+          Icons.warning,
+          color: Colors.red,
+        ),
+        Text(message),
+      ],
+    )));
   }
 }
