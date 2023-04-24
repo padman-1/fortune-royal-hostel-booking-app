@@ -32,12 +32,16 @@ class _HomeTabState extends State<HomeTab> {
     '1200kw Plant',
     'Kitchen in every room',
   ];
+
+  List<String> facilities1 = [];
   @override
   Widget build(BuildContext context) {
     final devSize = MediaQuery.of(context).size;
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Container(
+        height: devSize.height,
+        color: backgroundColor,
         padding: const EdgeInsets.only(
           left: 10,
           right: 10,
@@ -68,7 +72,7 @@ class _HomeTabState extends State<HomeTab> {
                 return buildImage(urlImage, index);
               }),
               options: CarouselOptions(
-                height: 230,
+                height: 210,
                 autoPlay: true,
                 // enlargeCenterPage: true,
                 // autoPlayInterval: Duration(seconds: 0),
@@ -127,46 +131,86 @@ class _HomeTabState extends State<HomeTab> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _FacilitiesList(
-                      myicon: Icon(Icons.apartment),
-                      title: 'Main Building',
-                      ontap: () {},
-                    ),
-                    _FacilitiesList(
-                        myicon: Icon(Icons.hotel),
-                        title: 'Rooms',
-                        ontap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => StudentCardPage(),
-                          //   ),
-                          // );
-                        }),
-                    _FacilitiesList(
-                        myicon: Icon(Icons.kitchen),
-                        title: 'Kitchen',
-                        ontap: () {}),
-                    _FacilitiesList(
-                        myicon: Icon(Icons.tv), title: 'TV Room', ontap: () {}),
-                    _FacilitiesList(
-                        myicon: Icon(Icons.menu_book),
-                        title: 'Study Room',
-                        ontap: () {}),
-                  ],
+                child: SizedBox(
+                  width: devSize.width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _FacilitiesList(
+                        myicon: Icon(Icons.apartment),
+                        title: 'Building',
+                        ontap: () {},
+                      ),
+                      _FacilitiesList(
+                          myicon: Icon(Icons.hotel),
+                          title: 'Rooms',
+                          ontap: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (context) => StudentCardPage(),
+                            //   ),
+                            // );
+                          }),
+                      _FacilitiesList(
+                          myicon: Icon(Icons.kitchen),
+                          title: 'Kitchen',
+                          ontap: () {}),
+                      _FacilitiesList(
+                        myicon: Icon(Icons.tv),
+                        title: 'TV Room',
+                        ontap: () {},
+                      ),
+                      _FacilitiesList(
+                          myicon: Icon(Icons.menu_book),
+                          title: 'Study Room',
+                          ontap: () {}),
+                    ],
+                  ),
                 ),
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
+
+            Center(
+              child: GestureDetector(
+                child: Container(
+                  width: devSize.width / 1.6,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  margin: EdgeInsets.symmetric(vertical: 5),
+                  decoration: BoxDecoration(
+                    // border: Border.all(),
+                    color: primaryColor.withOpacity(0.1),
+                    // color: secondaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.location_on,
+                        color: Colors.black54,
+                      ),
+                      Text(
+                        'View location',
+                        style: GoogleFonts.lato(color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
             // Text(
-            //   'Few Excerpts',
+            //   'View location',
             //   style: GoogleFonts.manrope(fontSize: 16),
             // ),
+            // SizedBox(height: 20,),
           ],
         ),
       ),
@@ -202,33 +246,47 @@ class _FacilitiesList extends StatelessWidget {
   });
   Widget myicon;
   String title;
-  Function ontap;
+  void Function() ontap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      width: 80,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 10,
-      ),
-      margin: const EdgeInsets.symmetric(
-        horizontal: 4,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.blueGrey.withOpacity(0.2),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          myicon,
-          Text(
-            title,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+    return GestureDetector(
+      onTap: ontap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: primaryColor.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        // height: 70,
+        width: 60,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 10,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 30,
+              width: 30,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.blueGrey.withOpacity(0.2),
+              ),
+              child: myicon,
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              title,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: const TextStyle(
+                fontSize: 11,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

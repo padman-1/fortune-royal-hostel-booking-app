@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fortune_room_booking_app/config/constants.dart';
 import 'package:fortune_room_booking_app/pages/home/home_page.dart';
+import 'package:fortune_room_booking_app/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../config/constants.dart';
@@ -26,14 +27,7 @@ class _SignInFormState extends State<SignInForm> {
   final passwordController = TextEditingController();
 
   void signUserIn() async {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
+    showLoadingDialog(context);
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,

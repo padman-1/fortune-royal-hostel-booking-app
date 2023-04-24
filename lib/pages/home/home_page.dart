@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           Icons.menu,
           color: Colors.black54,
         ),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: backgroundColor,
         actions: [
           CircleAvatar(
             backgroundImage: AssetImage(
